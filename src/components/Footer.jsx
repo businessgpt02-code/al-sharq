@@ -10,13 +10,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-10 mb-12">
           
           <div className="lg:col-span-5 space-y-3">
-            <Link to="/" className="flex items-center group">
+            <div className="flex items-center">
               <img 
                 src="/logo.png" 
                 alt="SAQR AL SHARQ" 
-                className="h-16 md:h-24 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
+                className="h-16 md:h-24 w-auto object-contain transition-transform duration-300" 
               />
-            </Link>
+            </div>
             <p className="text-xl text-brand-grey font-light max-w-md leading-relaxed">
               We engineer visual identities and premium advertising solutions that command attention.
             </p>
@@ -28,9 +28,9 @@ const Footer = () => {
               <ul className="space-y-4">
                 {['Home', 'About', 'Services', 'Portfolio'].map(item => (
                   <li key={item}>
-                    <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group">
+                    <div className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group cursor-default">
                       {item} <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                    </Link>
+                    </div>
                   </li>
                 ))}
               </ul>
@@ -40,14 +40,14 @@ const Footer = () => {
               <h4 className="text-white font-display font-semibold tracking-wide">Socials</h4>
               <ul className="space-y-4">
                 <li>
-                  <a href="https://www.facebook.com/saqradv" target="_blank" rel="noreferrer" className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group">
+                  <div className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group cursor-default">
                     Facebook <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                  </a>
+                  </div>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/uae_signage_saqr_adv/" target="_blank" rel="noreferrer" className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group">
+                  <div className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group cursor-default">
                     Instagram <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                  </a>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -56,14 +56,14 @@ const Footer = () => {
               <h4 className="text-white font-display font-semibold tracking-wide">Contact</h4>
               <ul className="space-y-4 text-brand-grey text-sm">
                 <li>
-                  <a href="mailto:info@saqradvertising.com" className="hover:text-white transition-colors block">
+                  <div className="hover:text-white transition-colors block cursor-default">
                     info@saqradvertising.com
-                  </a>
+                  </div>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <a href="tel:+971507771306" className="hover:text-white transition-colors block">+971 50 7771306</a>
-                  <a href="tel:+971507771304" className="hover:text-white transition-colors block">+971 50 7771304</a>
-                  <a href="tel:+971507097709" className="hover:text-white transition-colors block">+971 50 7097709</a>
+                  <div className="hover:text-white transition-colors block cursor-default">+971 50 7771306</div>
+                  <div className="hover:text-white transition-colors block cursor-default">+971 50 7771304</div>
+                  <div className="hover:text-white transition-colors block cursor-default">+971 50 7097709</div>
                 </li>
                 <li className="pt-2 leading-relaxed">
                   Shed # C-09, 29th Street,<br/>Industrial Area 5,<br/>Sharjah, U.A.E.
@@ -76,8 +76,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5 text-sm text-brand-grey/50">
           <p>&copy; {new Date().getFullYear()} SAQR AL SHARQ. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <div className="hover:text-white transition-colors cursor-default">Privacy Policy</div>
+            <div className="hover:text-white transition-colors cursor-default">Terms of Service</div>
           </div>
         </div>
       </div>

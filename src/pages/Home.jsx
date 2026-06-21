@@ -133,9 +133,9 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-4 flex gap-6"
           >
-            <Link to="/portfolio" className="px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+            <div className="px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 cursor-default">
               View Work <ArrowUpRight size={20} />
-            </Link>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -491,15 +491,14 @@ const Home = () => {
                     "Vehicle Wrapping",
                     "Event Setups"
                   ].map((service, i) => (
-                    <Link
+                    <div
                       key={i}
-                      to={`/contact?service=${encodeURIComponent(service)}`}
-                      className="px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:border-brand-accent hover:bg-brand-accent/5 text-white text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                      className="px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:border-brand-accent hover:bg-brand-accent/5 text-white text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-default"
                       title={`Request a quote for ${service} solutions in Dubai`}
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
                       {service}
-                    </Link>
+                    </div>
                   ))}
                 </nav>
               </div>
@@ -524,23 +523,19 @@ const Home = () => {
                 </p>
 
                 <div className="space-y-4">
-                  <Link 
-                    to="/contact" 
-                    className="w-full py-4 bg-white text-brand-navy font-bold rounded-2xl hover:bg-brand-silver transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  <div 
+                    className="w-full py-4 bg-white text-brand-navy font-bold rounded-2xl hover:bg-brand-silver transition-all duration-300 flex items-center justify-center gap-2 group/btn cursor-default"
                     aria-label="Request a tailored quote for your production project"
                   >
                     Get a Tailored Quote
                     <ArrowUpRight size={20} className="transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </Link>
-                  <a 
-                    href="https://wa.me/971500000000"
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="w-full py-4 border border-white/10 hover:border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2"
+                  </div>
+                  <div 
+                    className="w-full py-4 border border-white/10 hover:border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 cursor-default"
                     aria-label="Discuss your signage or joinery project with us on WhatsApp"
                   >
                     Discuss on WhatsApp
-                  </a>
+                  </div>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs text-brand-grey">
