@@ -1,0 +1,34 @@
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+
+  return (
+    <div className="flex flex-col min-h-screen relative selection:bg-brand-accent selection:text-white">
+      {/* Ambient background glows */}
+      <div className="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-accent/5 blur-[120px] pointer-events-none -z-10"></div>
+      <div className="fixed bottom-[-20%] right-[-10%] w-[40%] h-[60%] rounded-full bg-blue-900/10 blur-[150px] pointer-events-none -z-10"></div>
+      
+      <Navbar />
+      <main className="flex-grow z-10">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={{ opacity: 0, filter: 'blur(10px)' }}
+            animate={{ opacity: 1, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, filter: 'blur(10px)' }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {children}
+          </motion.div>
+        </AnimatePresence>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Layout;
