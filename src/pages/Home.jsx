@@ -133,9 +133,12 @@ const Home = () => {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-4 flex gap-6"
           >
-            <div className="px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 cursor-default">
+            <button
+              disabled
+              className="px-8 py-4 bg-white/10 text-white/30 font-bold rounded-full cursor-not-allowed flex items-center gap-2 select-none"
+            >
               View Work <ArrowUpRight size={20} />
-            </div>
+            </button>
           </motion.div>
         </motion.div>
 
@@ -158,12 +161,12 @@ const Home = () => {
         />
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 -z-20">
-          <div className="absolute inset-0 bg-[#020617]/70" />
           <img 
             src="/home/hero.png" 
             alt="Hero Background" 
             className="w-full h-full object-cover" 
           />
+          <div className="absolute inset-0 bg-[#020617]/70" />
         </div>
       </section>
 
@@ -272,7 +275,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="pt-4 pb-16 px-6 md:px-12 relative overflow-hidden">
+      <section className="pt-20 pb-16 px-6 md:px-12 relative overflow-hidden">
         <div className="absolute top-1/2 left-[10%] w-[350px] h-[350px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none -z-10" />
         <div className="absolute bottom-1/2 right-[10%] w-[350px] h-[350px] bg-brand-accent/10 rounded-full blur-[100px] pointer-events-none -z-10" />
 
@@ -293,10 +296,10 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { value: "11+", label: "Years of Advertising Excellence", desc: "Delivering high-end signage and corporate branding across Dubai and the UAE." },
-              { value: "2.5K+", label: "Custom Signage Projects", desc: "Fabrication of 3D building signs, interactive LED displays, and exhibition stands." },
-              { value: "500+", label: "Trusted Corporate Clients", desc: "Partnering with leading brands, shopping malls, and multinational companies." },
-              { value: "15K+", label: "Signage & Joinery Facility", desc: "Our fully equipped in-house metal fabrication and woodworking factory floor." }
+              { value: "11+", label: "Years of Experience", desc: "Delivering high-end signage and branding across Dubai and the UAE since 2015." },
+              { value: "5K+", label: "Completed Projects", desc: "Fabrication of 3D building signs, interactive LED displays, and exhibition stands." },
+              { value: "500+", label: "Trusted Clients", desc: "Partnering with leading brands, shopping malls, and businesses across all seven Emirates." },
+              { value: "11K+", label: "Sq Ft Production Facility", desc: "Our fully equipped in-house metal fabrication and woodworking factory floor." }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -323,42 +326,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Partners Section */}
-      <section className="pt-16 pb-8 border-t border-b border-white/5 bg-[#020617]/40 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <span className="text-xs md:text-sm font-bold tracking-[0.25em] text-brand-accent uppercase mb-2 block">
-              Collaborations
-            </span>
-            <h3 className="text-3xl md:text-4xl font-display font-black tracking-tighter uppercase text-white">
-              Trusted by Premier Brands
-            </h3>
-          </div>
-          <p className="text-brand-grey text-sm md:text-base font-light max-w-sm">
-            Partnering with major developers, retail groups, and enterprises across the Gulf region.
-          </p>
-        </div>
 
-        <div className="flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-          <div className="flex gap-16 shrink-0 animate-marquee-left py-4 items-center">
-            {[
-              "EMAAR", "AL-FUTTAIM", "AL TAYER", "DAMAC", 
-              "DUBAI HOLDING", "NAKHEEL", "ALDAR", "SHARAF DG"
-            ].concat([
-              "EMAAR", "AL-FUTTAIM", "AL TAYER", "DAMAC", 
-              "DUBAI HOLDING", "NAKHEEL", "ALDAR", "SHARAF DG"
-            ]).map((partner, idx) => (
-              <div 
-                key={`partner-${idx}`} 
-                className="text-2xl md:text-3xl font-display font-black tracking-[0.2em] text-brand-grey/40 hover:text-brand-accent transition-all duration-300 cursor-pointer select-none whitespace-nowrap flex items-center gap-3"
-              >
-                <div className="w-2.5 h-2.5 bg-brand-accent rounded-full opacity-60" />
-                {partner}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials Section */}
       <section className="pt-8 pb-12 overflow-hidden relative">
@@ -448,12 +416,12 @@ const Home = () => {
       <section className="pt-16 pb-24 px-6 md:px-12 relative overflow-hidden" aria-label="Call to Action - Get a Custom Quote">
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 -z-20">
-          <div className="absolute inset-0 bg-[#020617]/85" />
           <img 
             src="/home/CTA.png" 
             alt="Production Facility Background" 
             className="w-full h-full object-cover" 
           />
+          <div className="absolute inset-0 bg-[#020617]/85" />
         </div>
         <div className="absolute top-1/4 right-[5%] w-[450px] h-[450px] bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '8s' }} />
         <div className="absolute bottom-1/4 left-[5%] w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '12s' }} />
@@ -491,14 +459,13 @@ const Home = () => {
                     "Vehicle Wrapping",
                     "Event Setups"
                   ].map((service, i) => (
-                    <div
+                    <span
                       key={i}
-                      className="px-5 py-3 rounded-full bg-white/5 border border-white/10 hover:border-brand-accent hover:bg-brand-accent/5 text-white text-sm font-medium transition-all duration-300 transform hover:scale-105 flex items-center gap-2 cursor-default"
-                      title={`Request a quote for ${service} solutions in Dubai`}
+                      className="px-5 py-3 rounded-full bg-white/5 border border-white/5 text-white/40 text-sm font-medium flex items-center gap-2 cursor-not-allowed select-none"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-accent/30" />
                       {service}
-                    </div>
+                    </span>
                   ))}
                 </nav>
               </div>
@@ -511,9 +478,9 @@ const Home = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="bg-glass-card rounded-[32px] p-8 md:p-12 border border-white/5 relative overflow-hidden group hover:border-brand-accent/30 transition-all duration-500"
+                className="bg-glass-card rounded-[32px] p-8 md:p-12 border border-white/5 relative overflow-hidden group transition-all duration-500"
               >
-                <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/10 rounded-full blur-[40px] group-hover:bg-brand-accent/20 transition-all duration-500" />
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-accent/5 rounded-full blur-[40px] transition-all duration-500" />
                 
                 <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-4">
                   Let’s Talk Production
@@ -523,19 +490,19 @@ const Home = () => {
                 </p>
 
                 <div className="space-y-4">
-                  <div 
-                    className="w-full py-4 bg-white text-brand-navy font-bold rounded-2xl hover:bg-brand-silver transition-all duration-300 flex items-center justify-center gap-2 group/btn cursor-default"
-                    aria-label="Request a tailored quote for your production project"
+                  <button 
+                    disabled
+                    className="w-full py-4 bg-white/10 text-white/30 font-bold rounded-2xl cursor-not-allowed flex items-center justify-center gap-2 select-none"
                   >
                     Get a Tailored Quote
-                    <ArrowUpRight size={20} className="transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-                  </div>
-                  <div 
-                    className="w-full py-4 border border-white/10 hover:border-white/20 text-white font-bold rounded-2xl hover:bg-white/5 transition-all duration-300 flex items-center justify-center gap-2 cursor-default"
-                    aria-label="Discuss your signage or joinery project with us on WhatsApp"
+                    <ArrowUpRight size={20} />
+                  </button>
+                  <button 
+                    disabled
+                    className="w-full py-4 border border-white/5 text-white/30 font-bold rounded-2xl cursor-not-allowed flex items-center justify-center gap-2 select-none"
                   >
                     Discuss on WhatsApp
-                  </div>
+                  </button>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs text-brand-grey">

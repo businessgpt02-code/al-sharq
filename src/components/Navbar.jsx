@@ -30,35 +30,47 @@ const Navbar = () => {
           scrolled ? "bg-glass px-6 py-4" : "bg-transparent px-2 py-2"
         )}
       >
-        <div className="flex items-center z-50">
+        <Link to="/" className="flex items-center z-50 group">
           <img 
             src="/logo.png" 
             alt="SAQR AL SHARQ" 
-            className="h-12 md:h-16 w-auto object-contain transition-transform duration-300" 
+            className="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform duration-300" 
           />
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <div
-              key={link.name}
-              className="relative text-sm font-medium text-brand-silver hover:text-white transition-colors group cursor-default"
-            >
-              {link.name}
-              {location.pathname === link.path && (
-                <motion.div 
-                  layoutId="nav-indicator"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent rounded-full"
-                />
-              )}
-            </div>
-          ))}
-          <div
-            className="px-6 py-2.5 bg-white text-brand-navy font-semibold rounded-full hover:bg-brand-silver transition-colors transform hover:scale-105 duration-200 cursor-default"
+          {navLinks.map((link) => {
+            const isFunctional = link.path === '/' || link.path === '/about';
+            return isFunctional ? (
+              <Link
+                key={link.name}
+                to={link.path}
+                className="relative text-sm font-medium text-brand-silver hover:text-white transition-colors group"
+              >
+                {link.name}
+                {location.pathname === link.path && (
+                  <motion.div 
+                    layoutId="nav-indicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent rounded-full"
+                  />
+                )}
+              </Link>
+            ) : (
+              <span
+                key={link.name}
+                className="relative text-sm font-medium text-brand-silver/40 cursor-not-allowed select-none"
+              >
+                {link.name}
+              </span>
+            );
+          })}
+          <button
+            disabled
+            className="px-6 py-2.5 bg-white/10 text-white/30 font-semibold rounded-full cursor-not-allowed select-none"
           >
             Contact
-          </div>
+          </button>
         </nav>
 
         {/* Mobile Toggle */}
@@ -79,21 +91,32 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-0 left-0 w-full h-screen bg-[#020617]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pointer-events-auto"
           >
-            {navLinks.map((link) => (
-              <div
-                key={link.name}
-                className="font-display text-4xl font-bold text-white hover:text-brand-accent transition-colors cursor-default"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </div>
-            ))}
-            <div
-              className="px-10 py-4 mt-8 bg-white text-brand-navy font-bold text-xl rounded-full cursor-default"
-              onClick={() => setIsOpen(false)}
+            {navLinks.map((link) => {
+              const isFunctional = link.path === '/' || link.path === '/about';
+              return isFunctional ? (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className="font-display text-4xl font-bold text-white hover:text-brand-accent transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <span
+                  key={link.name}
+                  className="font-display text-4xl font-bold text-white/30 cursor-not-allowed select-none"
+                >
+                  {link.name}
+                </span>
+              );
+            })}
+            <button
+              disabled
+              className="px-10 py-4 mt-8 bg-white/10 text-white/30 font-bold text-xl rounded-full cursor-not-allowed select-none"
             >
               Contact Us
-            </div>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
