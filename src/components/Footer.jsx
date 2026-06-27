@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
 
 const Footer = () => {
   return (
@@ -27,19 +28,18 @@ const Footer = () => {
               <h4 className="text-white font-display font-semibold tracking-wide">Navigation</h4>
               <ul className="space-y-4">
                 {['Home', 'About', 'Services', 'Portfolio'].map(item => {
-                  const isFunctional = item === 'Home' || item === 'About';
+                  const isDisabled = item === 'Portfolio';
+
                   return (
-                    <li key={item}>
-                      {isFunctional ? (
-                        <Link to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="text-brand-grey hover:text-white transition-colors flex items-center gap-1 group">
-                          {item} <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                        </Link>
-                      ) : (
-                        <span className="text-brand-grey/40 cursor-not-allowed select-none flex items-center gap-1">
-                          {item}
-                        </span>
-                      )}
-                    </li>
+                  <li key={item}>
+                    <Link
+                      to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                      className={`text-brand-grey hover:text-white transition-colors flex items-center gap-1 group ${isDisabled ? disabledActionClassName : ''}`}
+                      {...(isDisabled ? disabledActionProps : {})}
+                    >
+                      {item} <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                    </Link>
+                  </li>
                   );
                 })}
               </ul>
@@ -49,14 +49,14 @@ const Footer = () => {
               <h4 className="text-white font-display font-semibold tracking-wide">Socials</h4>
               <ul className="space-y-4">
                 <li>
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none flex items-center gap-1">
-                    Facebook
-                  </span>
+                  <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className={`text-brand-grey hover:text-white transition-colors flex items-center gap-1 group ${disabledActionClassName}`} {...disabledActionProps}>
+                    Facebook <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                  </a>
                 </li>
                 <li>
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none flex items-center gap-1">
-                    Instagram
-                  </span>
+                  <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className={`text-brand-grey hover:text-white transition-colors flex items-center gap-1 group ${disabledActionClassName}`} {...disabledActionProps}>
+                    Instagram <ArrowUpRight size={14} className="opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                  </a>
                 </li>
               </ul>
             </div>
@@ -65,14 +65,14 @@ const Footer = () => {
               <h4 className="text-white font-display font-semibold tracking-wide">Contact</h4>
               <ul className="space-y-4 text-brand-grey text-sm">
                 <li>
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none block">
+                  <a href="mailto:info@saqradvertising.com" className={`text-brand-grey hover:text-white transition-colors block ${disabledActionClassName}`} {...disabledActionProps}>
                     info@saqradvertising.com
-                  </span>
+                  </a>
                 </li>
                 <li className="flex flex-col gap-2">
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none block">+971 50 7771306</span>
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none block">+971 50 7771304</span>
-                  <span className="text-brand-grey/40 cursor-not-allowed select-none block">+971 50 7097709</span>
+                  <a href="tel:+971507771306" className={`text-brand-grey hover:text-white transition-colors block ${disabledActionClassName}`} {...disabledActionProps}>+971 50 7771306</a>
+                  <a href="tel:+971507771304" className={`text-brand-grey hover:text-white transition-colors block ${disabledActionClassName}`} {...disabledActionProps}>+971 50 7771304</a>
+                  <a href="tel:+971507097709" className={`text-brand-grey hover:text-white transition-colors block ${disabledActionClassName}`} {...disabledActionProps}>+971 50 7097709</a>
                 </li>
                 <li className="pt-2 leading-relaxed text-brand-grey/40">
                   Shed # C-09, 29th Street,<br/>Industrial Area 5,<br/>Sharjah, U.A.E.
@@ -85,8 +85,8 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-8 border-t border-white/5 text-sm text-brand-grey/50">
           <p>&copy; {new Date().getFullYear()} SAQR AL SHARQ. All rights reserved.</p>
           <div className="flex gap-8">
-            <span className="text-brand-grey/30 cursor-not-allowed select-none">Privacy Policy</span>
-            <span className="text-brand-grey/30 cursor-not-allowed select-none">Terms of Service</span>
+            <Link to="/privacy-policy" className={`hover:text-white transition-colors ${disabledActionClassName}`} {...disabledActionProps}>Privacy Policy</Link>
+            <Link to="/terms-of-service" className={`hover:text-white transition-colors ${disabledActionClassName}`} {...disabledActionProps}>Terms of Service</Link>
           </div>
         </div>
       </div>

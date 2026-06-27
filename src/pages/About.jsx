@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
 
 const About = () => {
   const containerRef = useRef(null);
@@ -75,7 +76,7 @@ const About = () => {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-6 flex gap-6"
           >
-            <Link to="/contact" className="px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2">
+            <Link to="/contact" className={`px-8 py-4 bg-white text-brand-navy font-bold rounded-full hover:scale-105 transition-transform flex items-center gap-2 ${disabledActionClassName}`} {...disabledActionProps}>
               Contact Us <ArrowUpRight size={20} />
             </Link>
           </motion.div>
@@ -799,13 +800,15 @@ const About = () => {
                     "Vehicle Wrapping",
                     "Bespoke Joinery",
                   ].map((service, i) => (
-                    <span
+                    <Link
                       key={i}
-                      className="px-5 py-3 rounded-full bg-white/5 border border-white/5 text-white/40 text-sm font-medium flex items-center gap-2 cursor-not-allowed select-none"
+                      to={`/contact?service=${encodeURIComponent(service)}`}
+                      className={`px-5 py-3 rounded-full bg-white/5 border border-white/5 text-white text-sm font-medium flex items-center gap-2 hover:bg-white/10 hover:border-brand-accent/30 transition-colors ${disabledActionClassName}`}
+                      {...disabledActionProps}
                     >
                       <span className="w-1.5 h-1.5 rounded-full bg-brand-accent/30" />
                       {service}
-                    </span>
+                    </Link>
                   ))}
                 </nav>
               </div>
@@ -830,19 +833,23 @@ const About = () => {
                 </p>
 
                 <div className="space-y-4">
-                  <button
-                    disabled
-                    className="w-full py-4 bg-white/10 text-white/30 font-bold rounded-2xl cursor-not-allowed flex items-center justify-center gap-2 select-none"
+                  <Link
+                    to="/contact"
+                    className={`w-full py-4 bg-white text-brand-navy font-bold rounded-2xl hover:bg-brand-silver transition-colors flex items-center justify-center gap-2 ${disabledActionClassName}`}
+                    {...disabledActionProps}
                   >
                     Get a Tailored Quote
                     <ArrowUpRight size={20} />
-                  </button>
-                  <button
-                    disabled
-                    className="w-full py-4 border border-white/5 text-white/30 font-bold rounded-2xl cursor-not-allowed flex items-center justify-center gap-2 select-none"
+                  </Link>
+                  <a
+                    href="https://wa.me/971507771306?text=Hi%20Saqr%20Al%20Sharq%2C%20I%27d%20like%20to%20discuss%20a%20project."
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`w-full py-4 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/5 transition-colors flex items-center justify-center gap-2 ${disabledActionClassName}`}
+                    {...disabledActionProps}
                   >
                     Discuss on WhatsApp
-                  </button>
+                  </a>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between text-xs text-brand-grey">
@@ -867,4 +874,3 @@ const About = () => {
 
 
 export default About;
-

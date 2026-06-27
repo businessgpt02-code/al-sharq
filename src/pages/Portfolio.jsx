@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { disabledActionClassName } from '../utils/disabledAction';
 
 const Portfolio = () => {
-  const [filter, setFilter] = useState('All');
+  const [filter] = useState('All');
   const categories = ['All', 'Signage', 'Branding', 'Vehicle Graphics', 'Events'];
 
   const projects = [
@@ -34,8 +35,9 @@ const Portfolio = () => {
           {categories.map((cat, idx) => (
             <button
               key={idx}
-              onClick={() => setFilter(cat)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all ${
+              type="button"
+              disabled
+              className={`px-6 py-3 rounded-full text-sm font-medium transition-all ${disabledActionClassName} ${
                 filter === cat 
                   ? 'bg-white text-brand-navy' 
                   : 'bg-glass-card text-brand-grey hover:text-white'

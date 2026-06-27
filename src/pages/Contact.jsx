@@ -1,7 +1,16 @@
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, MessageSquare } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
+import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+  const selectedService = searchParams.get('service') || 'Select a Service';
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <div className="pt-32 pb-20 min-h-screen">
       <section className="container mx-auto px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-8">
@@ -35,8 +44,8 @@ const Contact = () => {
                   <Phone size={20} />
                 </div>
                 <h4 className="text-white font-display font-bold text-xl mb-2">Phone</h4>
-                <p className="text-brand-grey mb-4">+971 50 123 4567</p>
-                <a href="tel:+971501234567" className="text-sm font-bold text-brand-accent uppercase tracking-wider hover:text-white transition-colors">Call Now</a>
+                <p className="text-brand-grey mb-4">+971 50 7771306</p>
+                <a href="tel:+971507771306" className={`text-sm font-bold text-brand-accent uppercase tracking-wider hover:text-white transition-colors ${disabledActionClassName}`} {...disabledActionProps}>Call Now</a>
               </motion.div>
 
               <motion.div 
@@ -51,7 +60,7 @@ const Contact = () => {
                 </div>
                 <h4 className="text-white font-display font-bold text-xl mb-2">WhatsApp</h4>
                 <p className="text-brand-grey mb-4">Instant Support</p>
-                <a href="https://wa.me/971501234567" className="text-sm font-bold text-[#25D366] uppercase tracking-wider hover:text-white transition-colors">Chat Now</a>
+                <a href="https://wa.me/971507771306" target="_blank" rel="noreferrer" className={`text-sm font-bold text-[#25D366] uppercase tracking-wider hover:text-white transition-colors ${disabledActionClassName}`} {...disabledActionProps}>Chat Now</a>
               </motion.div>
 
               <motion.div 
@@ -65,8 +74,8 @@ const Contact = () => {
                   <Mail size={20} />
                 </div>
                 <h4 className="text-white font-display font-bold text-xl mb-2">Email</h4>
-                <p className="text-brand-grey mb-4">info@saqralsharq.com</p>
-                <a href="mailto:info@saqralsharq.com" className="text-sm font-bold text-brand-accent uppercase tracking-wider hover:text-white transition-colors">Send Email</a>
+                <p className="text-brand-grey mb-4">info@saqradvertising.com</p>
+                <a href="mailto:info@saqradvertising.com" className={`text-sm font-bold text-brand-accent uppercase tracking-wider hover:text-white transition-colors ${disabledActionClassName}`} {...disabledActionProps}>Send Email</a>
               </motion.div>
             </div>
 
@@ -80,8 +89,8 @@ const Contact = () => {
               {/* Map Placeholder */}
               <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/5">
                 <MapPin size={48} className="text-brand-accent mb-4 opacity-50" />
-                <p className="text-brand-grey font-medium text-lg">123 Design District, Creative Avenue</p>
-                <p className="text-brand-grey/50 text-sm">Dubai, UAE</p>
+                <p className="text-brand-grey font-medium text-lg">Shed # C-09, 29th Street</p>
+                <p className="text-brand-grey/50 text-sm">Industrial Area 5, Sharjah, U.A.E.</p>
               </div>
             </motion.div>
           </div>
@@ -96,25 +105,30 @@ const Contact = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
             <h3 className="text-3xl font-display font-bold mb-8 text-white relative z-10">Send a Request</h3>
             
-            <form className="space-y-6 relative z-10">
+            <form className="space-y-6 relative z-10" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-brand-grey uppercase tracking-wider">Full Name</label>
-                  <input type="text" className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors" placeholder="John Doe" />
+                  <input name="name" type="text" required className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors" placeholder="John Doe" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-brand-grey uppercase tracking-wider">Email Address</label>
-                  <input type="email" className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors" placeholder="john@example.com" />
+                  <input name="email" type="email" required className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors" placeholder="john@example.com" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-brand-grey uppercase tracking-wider">Service Required</label>
-                <select className="w-full px-4 py-4 rounded-xl bg-[#0F172A] border border-white/10 text-white focus:outline-none focus:border-brand-accent transition-colors appearance-none cursor-pointer">
+                <select name="service" defaultValue={selectedService} className="w-full px-4 py-4 rounded-xl bg-[#0F172A] border border-white/10 text-white focus:outline-none focus:border-brand-accent transition-colors appearance-none cursor-pointer">
                   <option>Select a Service</option>
                   <option>Signage & Display</option>
+                  <option>Bespoke Joinery</option>
+                  <option>Mall Kiosk</option>
+                  <option>Exhibition Stand</option>
                   <option>Branding & Identity</option>
                   <option>Vehicle Branding</option>
+                  <option>Vehicle Wrapping</option>
+                  <option>Event Setups</option>
                   <option>Printing Services</option>
                   <option>Other</option>
                 </select>
@@ -122,10 +136,10 @@ const Contact = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-semibold text-brand-grey uppercase tracking-wider">Project Details</label>
-                <textarea rows="4" className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors resize-none" placeholder="Tell us about your requirements..."></textarea>
+                <textarea name="message" rows="4" required className="w-full px-4 py-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-brand-accent focus:bg-white/10 transition-colors resize-none" placeholder="Tell us about your requirements..."></textarea>
               </div>
 
-              <button type="submit" className="px-8 py-4 bg-white text-brand-navy font-bold rounded-xl hover:bg-brand-silver transition-all w-full flex items-center justify-center gap-2 group">
+              <button type="submit" disabled className={`px-8 py-4 bg-white text-brand-navy font-bold rounded-xl hover:bg-brand-silver transition-all w-full flex items-center justify-center gap-2 group ${disabledActionClassName}`}>
                 <Send size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
                 Submit Request
               </button>

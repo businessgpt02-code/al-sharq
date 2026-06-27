@@ -8,10 +8,14 @@ export default {
     extend: {
       colors: {
         brand: {
-          navy: '#0A192F', // Deep navy blue
+          navy: '#102E6A', // Deep navy blue
+          dark: '#020617', // Very dark for cinematic sections
           grey: '#333333', // Charcoal grey
+          steel: '#708090', // Steel Grey
           silver: '#C0C0C0', // Metallic silver accent
-          light: '#F8F9FA'
+          light: '#F8F9FA',
+          electric: '#00D1FF', // Electric Blue Glow
+          accent: '#38BDF8', // Cyan accent
         }
       },
       fontFamily: {

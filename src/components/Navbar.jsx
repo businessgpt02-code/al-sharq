@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
+import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Portfolio', path: '/portfolio', disabled: true },
   ];
 
   return (
@@ -40,37 +41,32 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => {
-            const isFunctional = link.path === '/' || link.path === '/about';
-            return isFunctional ? (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="relative text-sm font-medium text-brand-silver hover:text-white transition-colors group"
-              >
-                {link.name}
-                {location.pathname === link.path && (
-                  <motion.div 
-                    layoutId="nav-indicator"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent rounded-full"
-                  />
-                )}
-              </Link>
-            ) : (
-              <span
-                key={link.name}
-                className="relative text-sm font-medium text-brand-silver/40 cursor-not-allowed select-none"
-              >
-                {link.name}
-              </span>
-            );
-          })}
-          <button
-            disabled
-            className="px-6 py-2.5 bg-white/10 text-white/30 font-semibold rounded-full cursor-not-allowed select-none"
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={clsx(
+                "relative text-sm font-medium text-brand-silver hover:text-white transition-colors group",
+                link.disabled && disabledActionClassName
+              )}
+              {...(link.disabled ? disabledActionProps : {})}
+            >
+              {link.name}
+              {location.pathname === link.path && (
+                <motion.div
+                  layoutId="nav-indicator"
+                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-accent rounded-full"
+                />
+              )}
+            </Link>
+          ))}
+          <Link
+            to="/contact"
+            className={`px-6 py-2.5 bg-white text-brand-navy font-semibold rounded-full hover:bg-brand-silver transition-colors ${disabledActionClassName}`}
+            {...disabledActionProps}
           >
             Contact
-          </button>
+          </Link>
         </nav>
 
         {/* Mobile Toggle */}
@@ -91,32 +87,35 @@ const Navbar = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-0 left-0 w-full h-screen bg-[#020617]/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pointer-events-auto"
           >
-            {navLinks.map((link) => {
-              const isFunctional = link.path === '/' || link.path === '/about';
-              return isFunctional ? (
-                <Link
-                  key={link.name}
-                  to={link.path}
-                  className="font-display text-4xl font-bold text-white hover:text-brand-accent transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ) : (
-                <span
-                  key={link.name}
-                  className="font-display text-4xl font-bold text-white/30 cursor-not-allowed select-none"
-                >
-                  {link.name}
-                </span>
-              );
-            })}
-            <button
-              disabled
-              className="px-10 py-4 mt-8 bg-white/10 text-white/30 font-bold text-xl rounded-full cursor-not-allowed select-none"
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                to={link.path}
+                className={clsx(
+                  "font-display text-4xl font-bold text-white hover:text-brand-accent transition-colors",
+                  link.disabled && disabledActionClassName
+                )}
+                onClick={(event) => {
+                  if (link.disabled) {
+                    event.preventDefault();
+                    return;
+                  }
+                  setIsOpen(false);
+                }}
+                {...(link.disabled ? { 'aria-disabled': 'true', tabIndex: -1 } : {})}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              to="/contact"
+              className={`px-10 py-4 mt-8 bg-white text-brand-navy font-bold text-xl rounded-full hover:bg-brand-silver transition-colors ${disabledActionClassName}`}
+              onClick={(event) => event.preventDefault()}
+              aria-disabled="true"
+              tabIndex={-1}
             >
               Contact Us
-            </button>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
