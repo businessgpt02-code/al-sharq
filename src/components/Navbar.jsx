@@ -20,7 +20,7 @@ const Navbar = () => {
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Services', path: '/services' },
-    { name: 'Portfolio', path: '/portfolio', disabled: true },
+    { name: 'Portfolio', path: '/portfolio' },
   ];
 
   return (
@@ -110,9 +110,7 @@ const Navbar = () => {
             <Link
               to="/contact"
               className={`px-10 py-4 mt-8 bg-white text-brand-navy font-bold text-xl rounded-full hover:bg-brand-silver transition-colors ${disabledActionClassName}`}
-              onClick={(event) => event.preventDefault()}
-              aria-disabled="true"
-              tabIndex={-1}
+              onClick={() => setIsOpen(false)}
             >
               Contact Us
             </Link>
