@@ -1,8 +1,15 @@
-import { useRef, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
+
+const heroImages = [
+  "/home/hero/1.jpg",
+  "/home/hero/2.jpeg",
+  "/home/hero/3.jpeg",
+  "/home/hero/4.jpg"
+];
 
 const servicesData = [
   {
@@ -21,11 +28,11 @@ const servicesData = [
     id: "03",
     title: "Vehicle Wrapping",
     desc: "Turn your fleet into moving billboards with our wraps.",
-    image: "/service/3.png"
+    image: "/home/vehicle.jpg"
   },
   {
     id: "04",
-    title: "Bespoke Joinery & Fit-Outs",
+    title: "Exhibition Stands & Kiosks",
     desc: "Custom shop & office interiors, retail mall kiosks, premium exhibition stands, event setups, and integrated LED screen walls engineered to perfection.",
     image: "/service/4.png"
   }
@@ -33,61 +40,64 @@ const servicesData = [
 
 const testimonialsRow1 = [
   {
-    quote: "Saqr Al Sharq completely transformed our retail space in Dubai Mall. Their bespoke kiosk joinery is absolutely flawless.",
-    author: "Sarah Jenkins"
+    quote: "very professional company\nthey made frosting stickers and signage for my company\nthe work was perfect\nreally thank you for your effort",
+    author: "Diva market",
+    profileUrl: "https://www.google.com/maps/contrib/115171810709819219742/reviews?hl=en-GB",
+    details: "2 reviews",
+    date: "3 years ago"
   },
   {
-    quote: "The 3D illuminated outdoor signage they fabricated for our HQ is stunning. Excellent attention to detail and clean installation.",
-    author: "Tariq Al Mansoor"
+    quote: "It was very good. I like it when I am working in my production department. Thanks",
+    author: "Aura Boy",
+    profileUrl: "https://www.google.com/maps/contrib/115515726541331124224/reviews?hl=en-GB",
+    details: "4 reviews · 2 photos",
+    date: "5 years ago"
   },
   {
-    quote: "Wrapped our entire commercial fleet of 25 vans in record time. The print quality and installation finish are perfect.",
-    author: "Mark Henderson"
-  },
-  {
-    quote: "Their exhibition stand design and build was the highlight of our Gitex show. The team went above and beyond.",
-    author: "Elena Rostova"
-  },
-  {
-    quote: "Professional, punctual, and highly skilled. The custom office fit-out they delivered exceeded all expectations.",
-    author: "David Chen"
-  },
-  {
-    quote: "The LED screen walls they integrated into our event setup worked flawlessly. Will definitely collaborate again.",
-    author: "Fatima Al Suwaidi"
+    quote: "Very talented team. Doing professional work of exhibition and signages.",
+    author: "Shah Faisal Hayat",
+    profileUrl: "https://www.google.com/maps/contrib/104104317648084995931/reviews?hl=en-GB",
+    details: "10 reviews · 1 photo",
+    date: "5 years ago"
   }
 ];
 
 const testimonialsRow2 = [
   {
-    quote: "Outstanding service from design to installation. The team is highly responsive and delivers top-tier craftsmanship.",
-    author: "Robert Miller"
+    quote: "Excellent Professional Team",
+    author: "Rao Ahsan Jamshaid Khan",
+    profileUrl: "https://www.google.com/maps/contrib/114259854894641615894/reviews?hl=en-GB",
+    details: "Local Guide · 157 reviews · 83 photos",
+    date: "7 years ago"
   },
   {
-    quote: "Saqr Al Sharq delivered a stunning showroom display kiosk for us. True professionals in joinery work.",
-    author: "Hisham Khalid"
+    quote: "Very nice working",
+    author: "Muneeb Rehman",
+    profileUrl: "https://www.google.com/maps/contrib/101451152977533517526/reviews?hl=en-GB",
+    details: "1 review",
+    date: "6 years ago"
   },
   {
-    quote: "Their signage solutions helped increase our store footfall significantly. Highly recommend their design team.",
-    author: "Amelie Dubois"
-  },
-  {
-    quote: "The office sign and lobby acrylic lettering look incredible. Very neat installation and premium materials used.",
-    author: "Priya Sharma"
-  },
-  {
-    quote: "Reliable production partner for all our exhibition needs in Dubai. They never compromise on quality.",
-    author: "John Smalls"
-  },
-  {
-    quote: "From shop fronts to office branding, their execution is unmatched. The best advertising agency in the UAE.",
-    author: "Faisal Al Hashimi"
+    quote: "Nice team work",
+    author: "MR IRFAN",
+    profileUrl: "https://www.google.com/maps/contrib/116902821685359854206/reviews?hl=en-GB",
+    details: "Local Guide · 184 reviews · 91 photos",
+    date: "3 years ago"
   }
 ];
 
 const Home = () => {
   const containerRef = useRef(null);
   const [activeService, setActiveService] = useState(0);
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
@@ -161,14 +171,23 @@ const Home = () => {
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -z-10"
         />
-        {/* Background Image with Dark Overlay */}
-        <div className="absolute inset-0 -z-20">
-          <img 
-            src="/home/hero.png" 
-            alt="Hero Background" 
-            className="w-full h-full object-cover" 
-          />
-          <div className="absolute inset-0 bg-[#020617]/70" />
+        {/* Background Image Slideshow with Dark Overlay */}
+        <div className="absolute inset-0 -z-20 overflow-hidden">
+          <AnimatePresence initial={false}>
+            <motion.img 
+              key={heroIndex}
+              src={heroImages[heroIndex]}
+              alt="Premium Signage & Branding Solutions by Saqr Al Sharq"
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="absolute inset-0 w-full h-full object-cover object-center" 
+              fetchPriority="high"
+              decoding="async"
+            />
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-[#020617]/65 z-10" />
         </div>
       </section>
 
@@ -228,12 +247,12 @@ const Home = () => {
                   }`}
                 >
                   {/* Background Image with SEO-focused Alt Text */}
-                  <div className="absolute inset-0 w-full h-full">
+                  <div className={`absolute inset-0 w-full h-full ${index === 0 ? 'flex items-center justify-center p-4' : ''}`}>
                     <div className={`absolute inset-0 z-10 transition-all duration-700 ${isActive ? 'bg-gradient-to-t from-[#020617] via-[#020617]/40 to-transparent' : 'bg-[#020617]/80'}`} />
                     <img 
                       src={service.image} 
                       alt={`${service.title} - Professional Advertising Production by Saqr Al Sharq in Dubai`} 
-                      className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-out ${isActive ? 'scale-105' : 'scale-100 opacity-50'}`} 
+                      className={`${index === 0 ? 'w-auto h-[85%] object-contain z-0' : 'w-full h-full object-cover'} transition-transform duration-[1.5s] ease-out ${isActive ? 'scale-105' : 'scale-100 opacity-50'}`} 
                     />
                   </div>
 
@@ -364,11 +383,7 @@ const Home = () => {
                 "name": t.author
               },
               "reviewBody": t.quote,
-              "reviewRating": {
-                "@type": "Rating",
-                "ratingValue": "5",
-                "bestRating": "5"
-              }
+              "url": t.profileUrl
             }))
           })}
         </script>
@@ -382,11 +397,14 @@ const Home = () => {
                   key={`t1-${idx}`} 
                   className="w-[350px] md:w-[450px] bg-glass-card rounded-2xl p-8 flex flex-col justify-between border border-white/5 hover:border-brand-accent/30 transition-colors duration-300"
                 >
-                  <p className="text-brand-silver/90 text-base md:text-lg font-light italic leading-relaxed mb-6">
+                  <p className="text-brand-silver/90 text-base md:text-lg font-light italic leading-relaxed whitespace-pre-line mb-6">
                     "{t.quote}"
                   </p>
                   <div>
-                    <h4 className="text-white font-display font-bold text-lg">{t.author}</h4>
+                    <a href={t.profileUrl} target="_blank" rel="noreferrer" className="text-white font-display font-bold text-lg hover:text-brand-accent transition-colors">
+                      {t.author}
+                    </a>
+                    <p className="text-brand-grey text-xs mt-1">{t.details} · {t.date}</p>
                   </div>
                 </div>
               ))}
@@ -401,11 +419,14 @@ const Home = () => {
                   key={`t2-${idx}`} 
                   className="w-[350px] md:w-[450px] bg-glass-card rounded-2xl p-8 flex flex-col justify-between border border-white/5 hover:border-brand-accent/30 transition-colors duration-300"
                 >
-                  <p className="text-brand-silver/90 text-base md:text-lg font-light italic leading-relaxed mb-6">
+                  <p className="text-brand-silver/90 text-base md:text-lg font-light italic leading-relaxed whitespace-pre-line mb-6">
                     "{t.quote}"
                   </p>
                   <div>
-                    <h4 className="text-white font-display font-bold text-lg">{t.author}</h4>
+                    <a href={t.profileUrl} target="_blank" rel="noreferrer" className="text-white font-display font-bold text-lg hover:text-brand-accent transition-colors">
+                      {t.author}
+                    </a>
+                    <p className="text-brand-grey text-xs mt-1">{t.details} · {t.date}</p>
                   </div>
                 </div>
               ))}
@@ -419,11 +440,15 @@ const Home = () => {
         {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 -z-20">
           <img 
-            src="/home/CTA.png" 
-            alt="Production Facility Background" 
-            className="w-full h-full object-cover" 
+            src="/home/cta-sharp.jpg" 
+            alt="Custom event stage and branded backdrop produced by Saqr Al Sharq" 
+            className="w-full h-full object-cover object-center" 
+            width="2560"
+            height="1440"
+            loading="lazy"
+            decoding="async"
           />
-          <div className="absolute inset-0 bg-[#020617]/85" />
+          <div className="absolute inset-0 bg-[#020617]/80" />
         </div>
         <div className="absolute top-1/4 right-[5%] w-[450px] h-[450px] bg-brand-accent/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '8s' }} />
         <div className="absolute bottom-1/4 left-[5%] w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '12s' }} />

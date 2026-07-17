@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Monitor, ArrowUpRight, Layout, Brush } from 'lucide-react';
+import { Monitor, ArrowUpRight, Layout, Brush, Car } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { disabledActionClassName, disabledActionProps } from '../utils/disabledAction';
 
@@ -16,28 +16,28 @@ const Services = () => {
 
   const services = [
     {
-      title: "Signage",
-      desc: "Comprehensive signage solutions including Outdoor Shop Signage, Mall Signage, Roof Top Signage, Indoor Signage, Reception Signage, LED Neon Signage, Flexface, Light Box, Acrylic, Aluminium, and Stainless Steel (SS) Signage.",
+      title: "Signage & Display Solutions",
+      desc: "Custom indoor and outdoor signs, illuminated boards, and cutting-edge digital displays that capture attention instantly.",
       icon: <Monitor className="w-12 h-12 mb-8 group-hover:scale-110 transition-transform text-brand-electric" />,
       items: ["Outdoor Shop Signage", "Mall Signage", "Roof Top Signage", "Indoor Signage", "Reception Signage", "LED Neon Signage", "Flexface Signage", "Light Box Signage", "Acrylic Signage", "Aluminium Signage", "Stainless Steel (SS) Signage"],
       glowClass: "bg-brand-electric/10 group-hover:bg-brand-electric/30",
       borderColor: "group-hover:border-brand-electric/30"
     },
     {
-      title: "Joinery Work",
-      desc: "Premium joinery and fabrication services including Shop/Office Interior, Mall Kiosks, Exhibition Stands, Event Setup, and LED Screen Walls.",
+      title: "Vehicle Wrapping",
+      desc: "Turn your fleet into moving billboards with our high-quality wraps and vehicle branding.",
+      icon: <Car className="w-12 h-12 mb-8 group-hover:scale-110 transition-transform text-pink-400" />,
+      items: ["Full Vehicle Wrap", "Partial Vehicle Wrap", "Reflective Graphics", "Fleet Branding", "Magnetic Signs"],
+      glowClass: "bg-pink-500/10 group-hover:bg-pink-500/30",
+      borderColor: "group-hover:border-pink-400/30"
+    },
+    {
+      title: "Exhibition Stands & Kiosks",
+      desc: "Custom shop & office interiors, retail mall kiosks, premium exhibition stands, event setups, and integrated LED screen walls engineered to perfection.",
       icon: <Layout className="w-12 h-12 mb-8 group-hover:scale-110 transition-transform text-brand-accent" />,
       items: ["Shop/Office Interior", "Mall Kiosks", "Exhibition Stand", "Event Setup", "LED Screen Walls"],
       glowClass: "bg-brand-accent/10 group-hover:bg-brand-accent/30",
       borderColor: "group-hover:border-brand-accent/30"
-    },
-    {
-      title: "Branding Work",
-      desc: "Professional branding services including Sticker Branding, Glass Frosting Sticker, Banner Branding, One Way Vision Sticker, and Vehicle Branding.",
-      icon: <Brush className="w-12 h-12 mb-8 group-hover:scale-110 transition-transform text-purple-400" />,
-      items: ["Sticker Branding", "Glass Frosting Sticker", "Banner Branding", "One Way Vision Sticker", "Vehicle Branding"],
-      glowClass: "bg-purple-500/10 group-hover:bg-purple-500/30",
-      borderColor: "group-hover:border-purple-400/30"
     }
   ];
 
@@ -302,7 +302,7 @@ const Services = () => {
 
           <div className="space-y-6 md:space-y-8">
             {services.map((service, index) => {
-              const images = ["/service_page/1.png", "/service_page/2.png", "/service_page/3.png"];
+              const images = ["/service_page/1.png", "/service_page/3.png", "/service_page/4.png"];
               const isReversed = index % 2 === 1;
 
               return (
