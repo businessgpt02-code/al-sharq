@@ -27,7 +27,6 @@ const contactCards = [
 
 const services = [
   'Signage',
-  'Joinery Work',
   'Branding Work',
   'Exhibition Stand',
   'Mall Kiosk',
@@ -50,7 +49,7 @@ const Contact = () => {
   useEffect(() => {
     document.title = 'Contact SAQR AL SHARQ Advertising LLC | Signage Company Sharjah';
 
-    const description = 'Contact SAQR AL SHARQ Advertising LLC, a signage company in Sharjah and advertising company UAE, for branding services Dubai, joinery work UAE, and exhibition stand contractor UAE solutions.';
+    const description = 'Contact SAQR AL SHARQ Advertising LLC, a signage company in Sharjah and advertising company UAE, for branding services and exhibition stand contractor UAE solutions.';
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -97,7 +96,7 @@ const Contact = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="mt-4 text-xl md:text-2xl text-brand-grey font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Contact SAQR AL SHARQ Advertising LLC for premium signage, branding, joinery, exhibition, and advertising solutions across Sharjah, Dubai, and the UAE.
+            Contact SAQR AL SHARQ Advertising LLC for premium signage, branding, exhibition, and advertising solutions across Sharjah, Dubai, and the UAE.
           </motion.p>
 
           <motion.div
@@ -202,13 +201,13 @@ const Contact = () => {
         >
           <div>
             <p className="text-sm font-bold tracking-[0.25em] text-brand-accent uppercase">
-              Branding Services Dubai | Joinery Work UAE
+              Branding Services UAE | Exhibition Stands UAE
             </p>
             <h2 className="mt-4 text-4xl md:text-6xl font-display font-black tracking-tighter leading-tight">
               Start Your Project
             </h2>
             <p className="mt-6 text-lg text-brand-grey leading-relaxed">
-              Tell us what you need and our team will guide you through signage, branding, joinery, mall kiosk, vehicle branding, and exhibition stand contractor UAE requirements.
+              Tell us what you need and our team will guide you through signage, branding, mall kiosk, vehicle branding, and exhibition stand contractor UAE requirements.
             </p>
           </div>
 

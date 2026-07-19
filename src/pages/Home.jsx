@@ -120,10 +120,10 @@ const Home = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-xs md:text-sm font-bold tracking-[0.25em] text-brand-accent uppercase mb-4 block">
-              Leading Advertising & Signage Company in Dubai
+              Leading Advertising & Signage Company in UAE
             </span>
             <h1 className="text-[12vw] md:text-[8vw] font-display font-black leading-[0.85] tracking-tighter">
-              <span className="sr-only">Saqr Al Sharq Advertising LLC - Premium Signage & Branding Solutions in Dubai, UAE</span>
+              <span className="sr-only">Saqr Al Sharq Advertising LLC - Premium Signage & Branding Solutions in UAE</span>
               BEYOND <br />
               <span className="text-white">ORDINARY.</span>
             </h1>
@@ -463,12 +463,12 @@ const Home = () => {
                   COLLABORATE WITH US
                 </span>
                 <h2 className="text-5xl md:text-7xl font-display font-black tracking-tighter text-white leading-tight">
-                  <span className="sr-only">Contact Saqr Al Sharq Advertising for Premium Signage Fabrication, Wood Joinery, and Retail Exhibition Stands in Dubai, UAE - </span>
+                  <span className="sr-only">Contact Saqr Al Sharq Advertising for Premium Signage Fabrication and Retail Exhibition Stands in UAE - </span>
                   LET’S BUILD <br />
                   <span className="text-white">SOMETHING BOLD.</span>
                 </h2>
                 <p className="text-brand-grey text-lg md:text-xl font-light mt-6 leading-relaxed max-w-xl">
-                  Whether you need custom fabrication, premium corporate signage, or high-end retail joinery, Saqr Al Sharq brings perfection to every detail.
+                  Whether you need custom fabrication, premium corporate signage, or exhibition stands, Saqr Al Sharq brings perfection to every detail.
                 </p>
               </div>
 
@@ -480,7 +480,6 @@ const Home = () => {
                 <nav className="flex flex-wrap gap-3" aria-label="Service Quick Contact Links">
                   {[
                     "Signage & Display",
-                    "Bespoke Joinery",
                     "Mall Kiosk",
                     "Exhibition Stand",
                     "Vehicle Wrapping",

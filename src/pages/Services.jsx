@@ -44,7 +44,7 @@ const Services = () => {
   useEffect(() => {
     document.title = "Advertising, Signage & Branding Services in Sharjah, Dubai UAE | Saqr Al Sharq";
 
-    const description = "Saqr Al Sharq Advertising LLC provides Signage Work, Joinery Work, and Branding Work services in Sharjah, Dubai, and across the UAE.";
+    const description = "Saqr Al Sharq Advertising LLC provides Signage Work and Branding Work services in Sharjah, Dubai, and across the UAE.";
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
       metaDescription = document.createElement('meta');
@@ -77,7 +77,7 @@ const Services = () => {
                 "@id": "https://saqralsharq.ae/services#webpage",
                 "url": "https://saqralsharq.ae/services",
                 "name": "Advertising, Signage & Branding Services in Sharjah, Dubai UAE",
-                "description": "Professional Signage Work, Joinery Work, and Branding Work services in Sharjah, Dubai, and across the UAE.",
+                "description": "Professional Signage Work and Branding Work services in Sharjah, Dubai, and across the UAE.",
                 "isPartOf": {
                   "@type": "WebSite",
                   "name": "Saqr Al Sharq Advertising LLC",
@@ -165,10 +165,10 @@ const Services = () => {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="text-xs md:text-sm font-bold tracking-[0.25em] text-brand-accent uppercase mb-4 mt-10 block">
-              Signage, Joinery & Branding Work in UAE
+              Signage & Branding Work in UAE
             </span>
             <h1 className="text-[12vw] md:text-[8vw] font-display font-black leading-[0.85] tracking-tighter">
-              <span className="sr-only">Signage, Joinery, and Branding Services in Sharjah, Dubai, and across the UAE by Saqr Al Sharq Advertising LLC</span>
+              <span className="sr-only">Signage and Branding Services in Sharjah, Dubai, and across the UAE by Saqr Al Sharq Advertising LLC</span>
               CORE ADVERTISING <br />
               <span className="text-white">SERVICES.</span>
             </h1>
@@ -180,7 +180,7 @@ const Services = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="mt-4 text-xl md:text-2xl text-brand-grey font-light max-w-2xl mx-auto leading-relaxed"
           >
-            Saqr Al Sharq Advertising LLC specializes in premium Signage, Joinery Work, and comprehensive Branding services in Sharjah, Dubai, and across the UAE.
+            Saqr Al Sharq Advertising LLC specializes in premium Signage and comprehensive Branding services in Sharjah, Dubai, and across the UAE.
           </motion.p>
 
           <motion.p
@@ -243,7 +243,7 @@ const Services = () => {
             "@type": "ItemList",
             "@id": "https://saqralsharq.ae/services#core-expertise",
             "name": "Core Advertising Expertise in Sharjah, Dubai, and UAE",
-            "description": "Core expertise from Saqr Al Sharq Advertising LLC covering signage, joinery work, and branding work for businesses across Sharjah, Dubai, and the UAE.",
+            "description": "Core expertise from Saqr Al Sharq Advertising LLC covering signage and branding work for businesses across Sharjah, Dubai, and the UAE.",
             "itemListElement": services.map((service, index) => ({
               "@type": "ListItem",
               "position": index + 1,
@@ -283,7 +283,7 @@ const Services = () => {
                 Core Expertise
               </span>
               <h2 id="core-expertise-heading" className="text-5xl md:text-7xl font-display font-black leading-[0.9] tracking-tighter">
-                SIGNAGE, JOINERY & BRANDING. <br />
+                SIGNAGE & BRANDING. <br />
                 <span className="text-white">ONE PRODUCTION HOUSE.</span>
               </h2>
             </motion.div>
@@ -296,7 +296,7 @@ const Services = () => {
               id="core-expertise-description"
               className="lg:col-span-5 text-lg md:text-xl text-brand-grey leading-relaxed font-light lg:pt-8"
             >
-              Saqr Al Sharq Advertising LLC delivers signage work, joinery work, and branding work in Sharjah, Dubai, and across the UAE, from first concept to final installation.
+              Saqr Al Sharq Advertising LLC delivers signage work and branding work in Sharjah, Dubai, and across the UAE, from first concept to final installation.
             </motion.p>
           </div>
 
@@ -465,7 +465,7 @@ const Services = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPoint",
-            "name": "Request a Quote for Advertising, Signage, Joinery, and Branding Services",
+            "name": "Request a Quote for Advertising, Signage, and Branding Services",
             "contactType": "sales",
             "telephone": "+971507771306",
             "email": "info@saqradvertising.com",
@@ -481,10 +481,10 @@ const Services = () => {
             "mainEntity": [
               {
                 "@type": "Question",
-                "name": "Where can I request signage, branding, and joinery services in the UAE?",
+                "name": "Where can I request signage and branding services in the UAE?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Saqr Al Sharq Advertising LLC provides signage, joinery, branding, fabrication, exhibition stands, vehicle branding, and event setup services in Sharjah, Dubai, Ajman, Abu Dhabi, and across the UAE."
+                  "text": "Saqr Al Sharq Advertising LLC provides signage, branding, fabrication, exhibition stands, vehicle branding, and event setup services in Sharjah, Dubai, Ajman, Abu Dhabi, and across the UAE."
                 }
               },
               {
@@ -492,7 +492,7 @@ const Services = () => {
                 "name": "Can Saqr Al Sharq handle design, production, and installation?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Yes. Saqr Al Sharq Advertising LLC handles design, technical planning, production, fabrication, and installation for signage, branding, joinery, exhibition, and advertising projects."
+                  "text": "Yes. Saqr Al Sharq Advertising LLC handles design, technical planning, production, fabrication, and installation for signage, branding, exhibition, and advertising projects."
                 }
               }
             ]
@@ -529,7 +529,7 @@ const Services = () => {
             transition={{ delay: 0.2 }}
             className="text-xl md:text-2xl text-brand-silver font-light mb-12"
           >
-            Partner with SAQR AL SHARQ Advertising LLC for premium signage, joinery work, branding, fabrication, exhibition stands, vehicle graphics, LED signage, mall kiosks, and advertising services trusted by businesses in Sharjah, Dubai, and across the UAE.
+            Partner with SAQR AL SHARQ Advertising LLC for premium signage, branding, fabrication, exhibition stands, vehicle graphics, LED signage, mall kiosks, and advertising services trusted by businesses in Sharjah, Dubai, and across the UAE.
           </motion.p>
 
           <p className="sr-only">

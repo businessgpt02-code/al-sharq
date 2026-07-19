@@ -55,7 +55,7 @@ const About = () => {
               Established in 2015
             </span>
             <h1 className="text-[12vw] md:text-[8vw] font-display font-black leading-[0.85] tracking-tighter">
-              <span className="sr-only">Saqr Al Sharq Advertising LLC - Premium Corporate Signage Fabrication, Custom Wooden Joinery, and Retail Exhibition Stands Builder in Dubai, UAE</span>
+              <span className="sr-only">Saqr Al Sharq Advertising LLC - Premium Corporate Signage Fabrication and Retail Exhibition Stands Builder in UAE</span>
               WE ARE <br />
               <span className="text-white">SAQR AL SHARQ.</span>
             </h1>
@@ -67,7 +67,7 @@ const About = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="mt-4 text-xl md:text-2xl text-brand-grey font-light max-w-2xl mx-auto leading-relaxed"
           >
-            We don't just create ads; we engineer brand legacies. As a premier advertising agency in Dubai, we transform businesses through innovative design, strategic branding, and high-quality production.
+            We create signage that builds strong brand identities, with guaranteed quality, professional installation, and dependable after-sales support.
           </motion.p>
           
           <motion.div
@@ -220,7 +220,7 @@ const About = () => {
             },
             "knowsAbout": [
               "Corporate Signage Fabrication",
-              "Bespoke Wood Joinery",
+
               "Retail Mall Kiosks",
               "Exhibition Stand Design & Build",
               "Vehicle Graphics & Wrapping"
@@ -611,7 +611,7 @@ const About = () => {
                     "Exhibition Stands",
                     "Mall Kiosks",
                     "Vehicle Wrapping",
-                    "Bespoke Joinery",
+
                   ].map((service, i) => (
                     <Link
                       key={i}
